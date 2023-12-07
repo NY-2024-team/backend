@@ -6,3 +6,11 @@ export interface User {
   vk_id: string | null
   google_id: string | null
 }
+
+export interface UserCreationOptions {
+  username: string
+  password: string
+  telegram_id?: string
+  vk_id?: string
+  google_id?: string
+}

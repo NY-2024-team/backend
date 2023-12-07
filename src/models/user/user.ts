@@ -1,5 +1,5 @@
 import type sqlite3 from 'sqlite3'
-import type { User } from './types'
+import type { User, UserCreationOptions } from './types'
 import { db } from '../../db'
 import { SQL_QUERIES } from './queries'
 
@@ -10,7 +10,7 @@ class UserModel {
     this.db = database
   }
 
-  async createUser (user: Omit<User, 'id'>): Promise<User | null> {
+  async createUser (user: UserCreationOptions): Promise<User | null> {
     const self = this
 
     return await new Promise((resolve, reject) => {
