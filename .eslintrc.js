@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('eslint').Linter.Config} */
+const config = {
   env: {
     es2021: true,
     node: true,
@@ -19,5 +20,9 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  rules: {},
+  rules: {
+    "@typescript-eslint/no-this-alias": ["off"],
+  },
 };
+
+module.exports = config
