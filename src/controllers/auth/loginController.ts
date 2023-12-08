@@ -27,9 +27,10 @@ export async function loginController (req: Request<undefined, undefined, Reques
   }
 
   const jwt = generateAccessToken(user)
+  const jwtExpiresTime = new Date(Date.now() + 1800 * 1000)
+  res.cookie('auth', jwt, { expires: jwtExpiresTime, httpOnly: true, secure: true })
   res.status(200)
   res.json({
-    user,
-    token: jwt
+    user
   })
 }
