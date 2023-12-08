@@ -12,6 +12,7 @@ const WRONG_USERNAME_OR_PASSWORD = 'Sorry, your username or password is wrong'
 
 export async function loginController (req: Request<undefined, undefined, RequestBodyPayload>, res: Response): Promise<void> {
   const { password, username } = req.body
+
   const user = await userModel.getUserByUsername(username)
   if (user === null) {
     res.status(400)
@@ -28,8 +29,9 @@ export async function loginController (req: Request<undefined, undefined, Reques
 
   const safeUser = userModel.removeSecretFields(user)
   const jwt = generateAccessToken(user)
-  const jwtExpiresTime = new Date(Date.now() + 1800 * 1000)
-  res.cookie('auth', jwt, { expires: jwtExpiresTime, httpOnly: true, secure: true })
+  const cookieExpiresTime = new Date(Date.now() + 1800 * 1000)
+
+  res.cookie('auth', jwt, { expires: cookieExpiresTime, httpOnly: true, secure: true })
   res.status(200)
   res.json({
     safeUser
