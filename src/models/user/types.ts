@@ -14,3 +14,5 @@ export interface UserCreationOptions {
   vk_id?: string
   google_id?: string
 }
+
+export type UserWithoutSecret = Omit<User, 'password' | 'id'>

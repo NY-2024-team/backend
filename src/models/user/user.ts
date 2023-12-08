@@ -1,7 +1,9 @@
 import type sqlite3 from 'sqlite3'
-import type { User, UserCreationOptions } from './types'
+import type { User, UserCreationOptions, UserWithoutSecret } from './types'
 import { db } from '../../db'
 import { SQL_QUERIES } from './queries'
+
+export const SECRET_FIELDS = ['password', 'id']
 
 class UserModel {
   private readonly db: sqlite3.Database
@@ -149,6 +151,13 @@ class UserModel {
         }
       })
     })
+  }
+
+  public removeSecretFields (user: User): UserWithoutSecret {
+    const { google_id, telegram_id, username, vk_id } = user
+    const userWithoutSecret: UserWithoutSecret = { google_id, telegram_id, username, vk_id }
+
+    return userWithoutSecret
   }
 }
 

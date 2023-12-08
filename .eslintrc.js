@@ -1,5 +1,5 @@
 /** @type {import('eslint').Linter.Config} */
-const config = {
+module.exports = {
   env: {
     es2021: true,
     node: true,
@@ -22,7 +22,7 @@ const config = {
   },
   rules: {
     "@typescript-eslint/no-this-alias": ["off"],
+    "@typescript-eslint/no-misused-promises": ["off"],
+    "@typescript-eslint/naming-convention": ['off']
   },
 };
-
-module.exports = config
