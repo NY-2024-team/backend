@@ -15,4 +15,4 @@ export interface UserCreationOptions {
   google_id?: string
 }
 
-export type UserWithoutSecret = Omit<User, 'password' | 'id'>
+export type UserWithoutSecret = Omit<User, 'password'>

@@ -154,8 +154,8 @@ class UserModel {
   }
 
   public removeSecretFields (user: User): UserWithoutSecret {
-    const { google_id, telegram_id, username, vk_id } = user
-    const userWithoutSecret: UserWithoutSecret = { google_id, telegram_id, username, vk_id }
+    const { google_id, telegram_id, username, vk_id, id } = user
+    const userWithoutSecret: UserWithoutSecret = { google_id, telegram_id, username, vk_id, id }
 
     return userWithoutSecret
   }

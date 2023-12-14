@@ -34,6 +34,7 @@ export async function loginController (req: Request<undefined, undefined, Reques
   res.cookie('auth', jwt, { expires: cookieExpiresTime, httpOnly: true, secure: true })
   res.status(200)
   res.json({
-    safeUser
+    user: safeUser,
+    token: jwt
   })
 }
